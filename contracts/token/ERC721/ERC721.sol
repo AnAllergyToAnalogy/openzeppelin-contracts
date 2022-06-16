@@ -153,7 +153,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
         uint256 tokenId
     ) public virtual override {
         //solhint-disable-next-line max-line-length
-        require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: caller is not token owner nor approved");
+        require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: caller is not token owner nor approved");f
 
         _transfer(from, to, tokenId);
     }
@@ -338,7 +338,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
         _beforeTokenTransfer(from, to, tokenId);
 
         // Clear approvals from the previous owner
-        _approve(address(0), tokenId);
+        delete _tokenApprovals[tokenId];
 
         _balances[from] -= 1;
         _balances[to] += 1;
